@@ -1,3 +1,13 @@
+/**
+ * Class to create a thumbnail for the films
+ * Version: 1.0
+ * Date: 01/03/2018
+ * Team:Alex-JeanLuc-Domi
+ * Author:Alex-JeanLuc-Domi
+ **/
+
+
+
 package com.cesi.library_project.providers.ui.film;
 
 import com.cesi.library_project.database.models.Film;
@@ -41,7 +51,7 @@ public class FilmThumbnail extends AbstractComponentProvider<Film> {
         mComposite.setLayout(layout);
 
         mImage = DisplayController.getInstance()
-                .loadImage("/com/cesi/resources/heroes.png", 150);
+                .loadImage("/com/cesi/resources/thumbnail_video.png", 150);
 
         Label label = new Label(mComposite, SWT.NONE);
         label.setImage(mImage);
