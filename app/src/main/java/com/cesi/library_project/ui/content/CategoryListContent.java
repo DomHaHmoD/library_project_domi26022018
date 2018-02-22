@@ -1,3 +1,13 @@
+/**
+ * CategoryListContent
+ * Use List of category to generate MainContent
+ * Version: 1.0
+ * Date: 01/03/2018
+ * Team:Alex-JeanLuc-Domi
+ * Author:Alex-JeanLuc-Domi
+ **/
+
+
 package com.cesi.library_project.ui.content;
 
 import com.cesi.library_project.database.controllers.AbstractController;
@@ -6,6 +16,7 @@ import com.cesi.library_project.database.models.IIdSetter;
 import com.cesi.library_project.providers.AbstractProvider;
 import com.cesi.library_project.providers.Providers;
 import com.cesi.library_project.providers.ui.AbstractComponentProvider;
+import com.cesi.library_project.providers.ui.music.MusicForm;
 import com.cesi.library_project.ui.DisplayController;
 import com.cesi.library_project.ui.IComponentProvider;
 import com.cesi.library_project.ui.scroll.ScrollContent;
@@ -72,16 +83,19 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
 
             AbstractController<IIdSetter> controller = provider.getTableController();
             List<IIdSetter> list = controller.list();
-
+                //display thumbnail of the category sended
             for (IIdSetter object : list) {
 
-                System.out.println(object.toString());
-                AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider(object);
-                component.implement(mChildComposite);
+                System.out.println (object.toString ());
+                AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider (object);
+                component.implement (mChildComposite);
             }
 
+            /**
+             * Button to add a new thumbnail
+             */
             Button button = new Button(mChildComposite, SWT.PUSH);
-            button.setText("Add a new element");
+            button.setText("Ajouter une nouvelle oeuvre");
             button.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseDoubleClick(MouseEvent mouseEvent) {
