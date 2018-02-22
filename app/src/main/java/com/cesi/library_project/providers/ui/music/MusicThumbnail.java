@@ -51,12 +51,7 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> {
     }
 
     //@Override
-    //public void implement(@NotNull Composite composite) {
-
-    //}
-
-    @Override
-    public <MODEL extends IIdSetter> void implement(@NotNull Composite composite) {
+    public void implement(@NotNull Composite composite) {
 
         //proxy composite to display the internal component easily
         mComposite = new Composite(composite, SWT.NONE);
@@ -73,46 +68,6 @@ public class MusicThumbnail extends AbstractComponentProvider<Music> {
 
         Label label = new Label(mComposite, SWT.NONE);
         label.setImage(mImage);
-
-        label.addMouseListener(new MouseListener() {
-            public AbstractProvider<IIdSetter, AbstractComponentProvider<IIdSetter>, AbstractController<IIdSetter>, AbstractComponentProvider<IIdSetter>> provider;
-
-            @Override
-            public void mouseDoubleClick(MouseEvent mouseEvent) {
-
-            }
-
-            @Override
-            public void mouseDown(MouseEvent mouseEvent) {
-
-            }
-
-            @Override
-            public void mouseUp(MouseEvent mouseEvent) {
-
-                AbstractComponentProvider<IIdSetter> component = provider.createObject();
-                System.out.println("on click " + component);
-
-                if (component != null) {
-                    Shell shell = new Shell(DisplayController.getInstance().getDisplay(),
-                            SWT.SHELL_TRIM);
-
-                    GridLayout layout = new GridLayout(1, true);
-                    layout.horizontalSpacing = layout.verticalSpacing = 0;
-                    layout.marginTop = layout.marginBottom = 0;
-                    layout.marginLeft = layout.marginRight = 0;
-                    layout.marginWidth = layout.marginHeight = 0;
-                    shell.setLayout(layout);
-
-                    component.implement(shell);
-
-                    shell.open();
-                }
-            }
-        });
-
-
-
 
 
             // to add title
