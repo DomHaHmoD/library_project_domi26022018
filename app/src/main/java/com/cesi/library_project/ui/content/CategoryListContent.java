@@ -66,70 +66,84 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
         //proxy composite to display the internal component easily
         mScrollProvider.implement(composite);
         mChildComposite = new Composite(mScrollProvider.getComposite(), SWT.NONE);
-        mChildComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
+        //mChildComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
+        mChildComposite.setBackground(DisplayController.getInstance().getColor(120, 255, 200));
 
-        mScrollProvider.setChild(this);
+        // TODO PUT THE TABLE HERE
 
-        RowLayout layout = new RowLayout(SWT.HORIZONTAL);
-        layout.wrap = true;
-        layout.marginTop = layout.marginBottom = layout.marginLeft = layout.marginRight = 24;
-        layout.marginHeight = layout.marginWidth = 0;
-        layout.spacing = 24;
-        mChildComposite.setLayout(layout);
+        if (mCategory.getName().equals("Tableau")) {
+            //System.out.println ("coucou je suis dans la table");
 
-        if (null != provider) {
 
-            provider.getTableController().register(this);
 
-            AbstractController<IIdSetter> controller = provider.getTableController();
-            List<IIdSetter> list = controller.list();
+
+
+
+        } else {
+
+            mScrollProvider.setChild (this);
+
+            RowLayout layout = new RowLayout (SWT.HORIZONTAL);
+            layout.wrap = true;
+            layout.marginTop = layout.marginBottom = layout.marginLeft = layout.marginRight = 24;
+            layout.marginHeight = layout.marginWidth = 0;
+            layout.spacing = 24;
+            mChildComposite.setLayout (layout);
+
+            if (null != provider) {
+
+                provider.getTableController ().register (this);
+
+                AbstractController<IIdSetter> controller = provider.getTableController ();
+                List<IIdSetter> list = controller.list ();
                 //display thumbnail of the category sended
-            for (IIdSetter object : list) {
+                for (IIdSetter object : list) {
 
-                System.out.println (object.toString ());
-                AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider (object);
-                component.implement (mChildComposite);
-            }
-
-            /**
-             * Button to add a new thumbnail
-             */
-            Button button = new Button(mChildComposite, SWT.PUSH);
-            button.setText("Ajouter une nouvelle oeuvre");
-            button.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseDoubleClick(MouseEvent mouseEvent) {
-
+                    System.out.println (object.toString ());
+                    AbstractComponentProvider<IIdSetter> component = provider.getThumbnailProvider (object);
+                    component.implement (mChildComposite);
                 }
 
-                @Override
-                public void mouseDown(MouseEvent mouseEvent) {
+                /**
+                 * Button to add a new thumbnail
+                 */
+                Button button = new Button (mChildComposite, SWT.PUSH);
+                button.setText ("Ajouter une nouvelle oeuvre");
+                button.addMouseListener (new MouseListener () {
+                    @Override
+                    public void mouseDoubleClick(MouseEvent mouseEvent) {
 
-                }
-
-                @Override
-                public void mouseUp(MouseEvent mouseEvent) {
-
-                    AbstractComponentProvider<IIdSetter> component = provider.createObject();
-                    System.out.println("on click " + component);
-
-                    if (component != null) {
-                        Shell shell = new Shell(DisplayController.getInstance().getDisplay(),
-                                SWT.SHELL_TRIM);
-
-                        GridLayout layout = new GridLayout(1, true);
-                        layout.horizontalSpacing = layout.verticalSpacing = 0;
-                        layout.marginTop = layout.marginBottom = 0;
-                        layout.marginLeft = layout.marginRight = 0;
-                        layout.marginWidth = layout.marginHeight = 0;
-                        shell.setLayout(layout);
-
-                        component.implement(shell);
-
-                        shell.open();
                     }
-                }
-            });
+
+                    @Override
+                    public void mouseDown(MouseEvent mouseEvent) {
+
+                    }
+
+                    @Override
+                    public void mouseUp(MouseEvent mouseEvent) {
+
+                        AbstractComponentProvider<IIdSetter> component = provider.createObject ();
+                        System.out.println ("on click " + component);
+
+                        if (component != null) {
+                            Shell shell = new Shell (DisplayController.getInstance ().getDisplay (),
+                                    SWT.SHELL_TRIM);
+
+                            GridLayout layout = new GridLayout (1, true);
+                            layout.horizontalSpacing = layout.verticalSpacing = 0;
+                            layout.marginTop = layout.marginBottom = 0;
+                            layout.marginLeft = layout.marginRight = 0;
+                            layout.marginWidth = layout.marginHeight = 0;
+                            shell.setLayout (layout);
+
+                            component.implement (shell);
+
+                            shell.open ();
+                        }
+                    }
+                });
+            }
         }
     }
 
