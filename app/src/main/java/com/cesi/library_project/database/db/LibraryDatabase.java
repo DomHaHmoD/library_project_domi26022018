@@ -59,12 +59,15 @@ public class LibraryDatabase extends DatabaseModel<ResultSet, HashMap<String, Ob
         FilmController.getInstance().init(this);
         MusicController.getInstance().init(this);
         MetaDataController.getInstance().init(this);
+        TableController.getInstance ().init(this);
 
         Category[] categories = new Category[]{
                 new Category("Film", "k", false, Film.class.getSimpleName()),
                 new Category("Musique", "o", false, Music.class.getSimpleName()),
                 new Category("Livre", "m", false, null),
-                new Category("Jeux-Video", "n", false, null)
+                new Category("Jeux-Video", "n", false, null),
+                new Category("Tableau", "d", false, null),
+                new Category("Rapport", "e", false, null)
         };
 
         MetaData meta_data = new MetaData("Une metadata",
