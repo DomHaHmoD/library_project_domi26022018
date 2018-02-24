@@ -38,6 +38,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class CategoryListContent implements IComponentProvider, AbstractController.IModificationListener {
@@ -75,8 +76,13 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
             //System.out.println ("coucou je suis dans la table");
 
 
-
-
+            try {
+                new OeuvreForm ().setVisible(true);
+            } catch (SQLException e) {
+                e.printStackTrace ();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace ();
+            }
 
 
         } else {

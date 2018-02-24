@@ -1,15 +1,11 @@
-package library_project;
+package com.cesi.library_project.ui.content;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Connexion {
-    
+
     private static String url = "jdbc:sqlite:ProjetJava.db";
     private static Connection connect = null;
 
