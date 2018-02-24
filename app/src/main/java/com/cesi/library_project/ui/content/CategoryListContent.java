@@ -74,8 +74,7 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
         if (mCategory.getName().equals("Tableau")) {
             //System.out.println ("coucou je suis dans la table");
 
-            MainFrame mainFrame = new MainFrame ();
-            mainFrame.setVisible(true);//On la rend visible
+
 
 
 
