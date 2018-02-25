@@ -21,6 +21,7 @@ import com.cesi.library_project.ui.DisplayController;
 import com.cesi.library_project.ui.IComponentProvider;
 import com.cesi.library_project.ui.scroll.ScrollContent;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ControlListener;
@@ -38,6 +39,10 @@ import org.eclipse.swt.widgets.Shell;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.*;
+
+
+import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -45,6 +50,10 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
     private final ScrollContent mScrollProvider;
     private final Category mCategory;
     private Composite mChildComposite;
+    private Component toto;
+    private Composite component;
+    private Composite parent;
+    private Component oeuvretoto;
 
     public CategoryListContent(Category category) {
         mScrollProvider = new ScrollContent();
@@ -67,22 +76,49 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
         //proxy composite to display the internal component easily
         mScrollProvider.implement(composite);
         mChildComposite = new Composite(mScrollProvider.getComposite(), SWT.NONE);
-        //mChildComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
-        mChildComposite.setBackground(DisplayController.getInstance().getColor(120, 255, 200));
+        mChildComposite.setBackground(DisplayController.getInstance().getColor(255, 255, 255));
+        //mChildComposite.setBackground(DisplayController.getInstance().getColor(120, 255, 200));
 
         // TODO PUT THE TABLE HERE
 
         if (mCategory.getName().equals("Tableau")) {
             //System.out.println ("coucou je suis dans la table");
-
-
-            try {
-                new OeuvreForm ().setVisible(true);
+            // ok with a popup =
+            /*try {
+                OeuvreForm oeuvreincontainer = new OeuvreForm ();
+                oeuvreincontainer.setVisible (true);
             } catch (SQLException e) {
                 e.printStackTrace ();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace ();
+            }*/
+
+
+            //Composite toto = new Composite(mChildComposite, SWT.EMBEDDED | SWT.NO_BACKGROUND);
+
+            //Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
+
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace ();
+            } catch (InstantiationException e) {
+                e.printStackTrace ();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace ();
+            } catch (UnsupportedLookAndFeelException e) {
+                e.printStackTrace ();
             }
+
+
+                Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
+                JApplet applet = new JApplet();
+                containerswtawt.add(applet);
+
+
+
+            //containerswtawt.add(oeuvretoto);
+
 
 
         } else {

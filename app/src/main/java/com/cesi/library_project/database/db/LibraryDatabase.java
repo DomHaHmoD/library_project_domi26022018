@@ -67,6 +67,10 @@ public class LibraryDatabase extends DatabaseModel<ResultSet, HashMap<String, Ob
                 new Category("Livre", "m", false, null),
                 new Category("Jeux-Video", "n", false, null),
                 new Category("Tableau", "d", false, null),
+                //new Category("Rapport", "e", false, null)
+        };
+            // add by domi to test a second menu under the first menu
+        Category[] categories2 = new Category[]{
                 new Category("Rapport", "e", false, null)
         };
 

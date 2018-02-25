@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author dubs
- */
+ *
+**/
+
 public class OeuvreForm extends javax.swing.JFrame {
 //public class OeuvreForm extends javax.swing.JPanel {
 
@@ -24,6 +26,9 @@ public class OeuvreForm extends javax.swing.JFrame {
     String requete;
     ResultSet result;
     DefaultTableModel model;
+    private JRootPane frame;
+    private JInternalFrame jf;
+    //private JApplet composite;
 
     public OeuvreForm() throws SQLException, ClassNotFoundException {
         initComponents();
@@ -324,6 +329,7 @@ public class OeuvreForm extends javax.swing.JFrame {
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        //javax.swing.GroupLayout layout = new javax.swing.GroupLayout(composite.getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
