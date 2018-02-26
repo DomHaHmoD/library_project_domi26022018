@@ -118,7 +118,7 @@ public class CategoryMenu implements IComponentProvider, ICategoryClicked {
         separator.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
         // add by domi to test a second menu under the first menu
-        mGrid.marginLeft = 12; // add to push rapport
+        /*mGrid.marginLeft = 12; // add to push rapport
         Composite temp_composite2 = new Composite(mComposite, SWT.NONE);
         RowLayout layout2 = new RowLayout(SWT.VERTICAL);
         layout2.marginTop = 12;
@@ -147,7 +147,33 @@ public class CategoryMenu implements IComponentProvider, ICategoryClicked {
             title3.setText ("Rapport");
 
 
-            //title3.setText ("a" + "rapport"); // ko why?
+            //title3.setText ("a" + "rapport"); // ko why?*/
+
+        mGrid.marginLeft = 12; // add to push rapport
+        Composite temp_composite2 = new Composite(mComposite, SWT.NONE);
+        RowLayout layout2 = new RowLayout(SWT.VERTICAL);
+        layout2.marginTop = 12;
+        layout2.marginBottom = layout2.marginLeft = 6;
+        temp_composite2.setLayout(layout2);
+        // add by domi to test a second menu under the first menu
+        Label title2 = new Label(temp_composite2, SWT.NONE);
+        title2.setText("Autre information");
+        title2.setForeground(DisplayController.getInstance()
+                .getColor(120, 120, 120));
+
+        Category vignette = new Category("Vignette", "g", true, "Film");
+        Category tableau = new Category("Tableau", "f", true, "Film");
+        List<Category> testList = new ArrayList<Category>();
+        testList.add(vignette);
+        testList.add(tableau);
+
+
+        for (Category category : testList) {
+            CategoryThumbnail item = Providers.CATEGORY_PROVIDER.getThumbnailProvider(category);
+            item.setCategoryParent(this);
+            mCategoriesItem.add(item);
+            item.implement(mComposite);
+        }
 
         Label separator2 = new Label(mComposite, SWT.HORIZONTAL | SWT.SEPARATOR);
         separator2.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));

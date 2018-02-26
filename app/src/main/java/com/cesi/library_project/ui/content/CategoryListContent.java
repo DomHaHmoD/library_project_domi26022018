@@ -84,19 +84,19 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
         if (mCategory.getName().equals("Tableau")) {
             //System.out.println ("coucou je suis dans la table");
             // ok with a popup =
-            /*try {
+            try {
                 OeuvreForm oeuvreincontainer = new OeuvreForm ();
                 oeuvreincontainer.setVisible (true);
             } catch (SQLException e) {
                 e.printStackTrace ();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace ();
-            }*/
+            }
 
 
             //Composite toto = new Composite(mChildComposite, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 
-            //Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
+            /*Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
 
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -111,13 +111,13 @@ public class CategoryListContent implements IComponentProvider, AbstractControll
             }
 
 
-                Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
+                //Frame containerswtawt = SWT_AWT.new_Frame(mChildComposite);
                 JApplet applet = new JApplet();
                 containerswtawt.add(applet);
 
 
 
-            //containerswtawt.add(oeuvretoto);
+            containerswtawt.add(oeuvretoto);*/
 
 
 
